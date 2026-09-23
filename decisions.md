@@ -63,3 +63,13 @@
   - Ensures clean repository commit history and prevents committing temporary execution artifacts or system cache files.
   - Guarantees seamless setup for collaborators or recruiters cloning the repository.
 - **Trade-off:** None. Non-negotiable software engineering practice.
+
+---
+
+## D7: Standardized Dataset & Empirical Benchmark Metrics
+
+- **What:** `src/benchmark.py` evaluates local models across a fixed 3-task dataset (`T1`, `T2`, `T3`), logging output to `results/benchmark_run.json`.
+- **Why:** 
+  - Generates reproducible, empirical engineering data (latency in seconds, retry counts, pass rates) rather than relying on qualitative impressions.
+  - Proves the effectiveness of the Pydantic retry feedback loop when larger models (e.g., `llama3.1:8b`) fail initial JSON formatting.
+- **Trade-off:** Running 7B and 8B models locally on CPU leads to elevated latency (~130s–220s per prompt), but provides zero-cost, 100% private execution.
